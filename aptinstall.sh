@@ -52,10 +52,11 @@ if [ ! -f /etc/ssh/sshd_config.old ] ; then
     systemctl restart sshd
 fi
 
-## Activation du Firewall
+## Activation du Firewall (avec désactivation de l'IP v6)
 if [ -f /usr/sbin/ufw ] ; then
     for ufwallow in $ufwlist ; do
         ufw allow $ufwallow
     done
+    sed -i "s,IPV6=yes,IPV6=no," /etc/default/ufw
     ufw enable
 fi
