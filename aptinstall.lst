@@ -1,5 +1,5 @@
 ## aptinstall list
-apache2-utils
+#apache2-utils
 certbot
 colordiff
 cron
@@ -11,7 +11,7 @@ fail2ban
 gnupg2
 htop
 lftp
-lm-sensors
+#lm-sensors
 localepurge
 mlocate
 ncdu
@@ -19,7 +19,7 @@ net-tools
 p7zip
 ripgrep
 rsync
-samba
+#samba
 sshfs
 sudo
 sysstat
