@@ -1,6 +1,6 @@
 ## aptinstall list
 #apache2-utils
-certbot
+#certbot
 colordiff
 cron
 curl
@@ -8,8 +8,9 @@ docker.io
 docker-compose
 duf
 fail2ban
-gnupg2
+#gnupg2
 htop
+hugo
 lftp
 #lm-sensors
 localepurge
@@ -20,7 +21,7 @@ p7zip
 ripgrep
 rsync
 #samba
-sshfs
+#sshfs
 sudo
 sysstat
 tree
@@ -29,5 +30,5 @@ unzip
 unattended-upgrades
 vim
 vim-youcompleteme
-youtube-dl
+#youtube-dl
 zip
