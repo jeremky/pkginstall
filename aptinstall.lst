@@ -8,11 +8,10 @@ docker.io
 docker-compose
 duf
 fail2ban
-#gnupg2
+gnupg2
 htop
 hugo
 lftp
-#lm-sensors
 localepurge
 mlocate
 ncdu
@@ -30,5 +29,4 @@ unzip
 unattended-upgrades
 vim
 vim-youcompleteme
-#youtube-dl
 zip
