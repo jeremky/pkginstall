@@ -1,5 +1,5 @@
 ## aptinstall list
-#apache2-utils
+apache2-utils
 #certbot
 colordiff
 cron
