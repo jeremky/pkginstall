@@ -4,8 +4,6 @@ apache2-utils
 colordiff
 cron
 curl
-docker.io
-docker-compose
 duf
 fail2ban
 gnupg2
