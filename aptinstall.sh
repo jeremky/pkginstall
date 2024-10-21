@@ -58,6 +58,8 @@ if [ -f /usr/sbin/ufw ] ; then
         ufw allow $ufwallow
     done
     sed -i "s,IPV6=yes,IPV6=no," /etc/default/ufw
+    ## Ajout pour Podman
+    ufw allow in on podman1
     ufw default allow FORWARD
     ufw enable
 fi
