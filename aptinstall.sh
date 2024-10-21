@@ -58,5 +58,6 @@ if [ -f /usr/sbin/ufw ] ; then
         ufw allow $ufwallow
     done
     sed -i "s,IPV6=yes,IPV6=no," /etc/default/ufw
+    ufw default allow FORWARD
     ufw enable
 fi
