@@ -8,7 +8,7 @@ duf
 fail2ban
 gnupg2
 htop
-hugo
+#hugo
 lftp
 localepurge
 mlocate
