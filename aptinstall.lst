@@ -9,7 +9,7 @@ fail2ban
 gnupg2
 htop
 #hugo
-lftp
+#lftp
 localepurge
 mlocate
 ncdu
@@ -20,6 +20,7 @@ rsync
 #samba
 sudo
 sysstat
+tmux
 tree
 ufw
 unzip
