@@ -6,12 +6,6 @@ dir=$(dirname "$0")
 cfg="$dir/$(basename -s .sh $0).cfg"
 list="$dir/$(basename -s .sh $0).lst"
 
-## Verification de l'OS
-if [ ! -f /usr/bin/apt ]; then
-    echo "OS incompatible !"
-    exit 0
-fi
-
 ## User
 if [ "$USER" != "root" ] ; then
     echo "Droits root nécessaires"
