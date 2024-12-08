@@ -1,12 +1,12 @@
 ## aptinstall list
-apache2-utils
+#apache2-utils
 #certbot
 colordiff
 cron
 curl
 duf
 fail2ban
-gnupg2
+#gnupg2
 htop
 #hugo
 #lftp
