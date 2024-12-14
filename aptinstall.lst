@@ -12,11 +12,12 @@ htop
 #hugo
 #lftp
 localepurge
+#neovim
 mlocate
 ncdu
 net-tools
 p7zip
-ranger
+#ranger
 ripgrep
 rsync
 #samba
