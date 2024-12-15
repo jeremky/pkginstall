@@ -12,7 +12,7 @@ htop
 #hugo
 #lftp
 localepurge
-#neovim
+neovim
 mlocate
 ncdu
 net-tools
