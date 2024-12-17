@@ -28,7 +28,7 @@ tree
 ufw
 unzip
 unattended-upgrades
-vim
-vim-airline
-vim-youcompleteme
+#vim
+#vim-airline
+#vim-youcompleteme
 zip
