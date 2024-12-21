@@ -1,26 +1,19 @@
 ## aptinstall list
-#apache2-utils
-#certbot
 colordiff
 cron
 curl
 duf
 fail2ban
-#gnupg2
 highlight
 htop
-#hugo
-#lftp
 localepurge
 neovim
 mlocate
 ncdu
 net-tools
 p7zip
-#ranger
 ripgrep
 rsync
-#samba
 sudo
 sysstat
 tmux
