@@ -4,7 +4,6 @@ cron
 curl
 duf
 fail2ban
-highlight
 htop
 localepurge
 neovim
@@ -21,5 +20,4 @@ tree
 ufw
 unzip
 unattended-upgrades
-vim-youcompleteme
 zip
