@@ -7,10 +7,10 @@ fail2ban
 htop
 localepurge
 neovim
-mlocate
 ncdu
 net-tools
 p7zip
+plocate
 ripgrep
 rsync
 sudo
