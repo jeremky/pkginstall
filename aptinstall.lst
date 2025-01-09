@@ -4,6 +4,7 @@ cron
 curl
 duf
 fail2ban
+fzf
 htop
 localepurge
 neovim
@@ -21,3 +22,4 @@ ufw
 unzip
 unattended-upgrades
 zip
+zoxide
