@@ -1,4 +1,5 @@
 ## aptinstall list
+clamav
 colordiff
 cron
 curl
