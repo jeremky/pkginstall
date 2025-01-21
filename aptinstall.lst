@@ -19,6 +19,7 @@ sudo
 sysstat
 tmux
 tree
+tuned
 ufw
 unzip
 unattended-upgrades
