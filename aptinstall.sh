@@ -25,7 +25,7 @@ if [ -f /usr/bin/unattended-upgrades ] ; then
 fi
 
 # Sécurisation de ssh (check sur https://www.ssh-audit.com/#)
-if [ ! -f /etc/ssh/sshd_config.old ] ; then
+if [ ! -f /etc/ssh/sshd_config.old ] && [ -f /etc/ssh/sshd_config ] ; then
   cp -p /etc/ssh/sshd_config /etc/ssh/sshd_config.old
   echo "" >> /etc/ssh/sshd_config 
   echo "# Secure Config\nX11Forwarding no\nAllowUsers $(id -un 1000)\nHostKey /etc/ssh/ssh_host_ed25519_key\nPasswordAuthentication yes\nKexAlgorithms curve25519-sha256@libssh.org\nMACs hmac-sha2-512,hmac-sha2-256,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com\nCiphers -chacha20-poly1305@openssh.com" >> /etc/ssh/sshd_config
