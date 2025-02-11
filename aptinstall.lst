@@ -8,7 +8,7 @@ fail2ban
 fzf
 htop
 localepurge
-neovim
+#neovim
 ncdu
 net-tools
 p7zip
