@@ -42,7 +42,9 @@ fi
 if [ -f /usr/sbin/ufw ] ; then
   sed -i "s,IPV6=yes,IPV6=no," /etc/default/ufw
   ufw allow ssh
-  ufw allow in on podman1
-  ufw default allow FORWARD
+  if [ -f /usr/bin/podman ] ; then
+    ufw allow in on podman1
+    ufw default allow FORWARD
+  fi
   ufw enable
 fi
