@@ -5,6 +5,7 @@ cron
 curl
 duf
 fail2ban
+fdfind
 fzf
 htop
 localepurge

@@ -1,6 +1,6 @@
 # aptinstall.sh
 
-Script automatisant l'installation et le parametrage de Debian :
+Script automatisant l'installation et le paramétrage de Debian :
 
 - Installe les paquets présents dans le fichier aptinstall.lst
 
