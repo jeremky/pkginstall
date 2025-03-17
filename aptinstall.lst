@@ -19,7 +19,7 @@ ripgrep
 rsync
 sudo
 sysstat
-#tmux
+tmux
 tree
 tuned
 ufw
