@@ -1,4 +1,4 @@
-# aptinstall.sh
+g aptinstall.sh
 
 Script automatisant l'installation et le paramétrage de Debian :
 
@@ -11,3 +11,5 @@ Script automatisant l'installation et le paramétrage de Debian :
 - Configure unattended-upgrades si installé
 
 - Active la commande locate si installée
+
+- Active la mise à jour automatique de la base de donnée clamav si installé
