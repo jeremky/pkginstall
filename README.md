@@ -1,8 +1,8 @@
-g aptinstall.sh
+# aptinstall.sh
 
 Script automatisant l'installation et le paramétrage de Debian :
 
-- Installe les paquets présents dans le fichier aptinstall.lst
+- Installe les paquets présents dans le fichier `aptinstall.lst`
 
 - Sécurise le serveur SSH et limite l'accès au user par défaut
 
