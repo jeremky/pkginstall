@@ -14,8 +14,6 @@ net-tools
 p7zip
 pipes-sh
 plocate
-podman
-podman-docker
 ripgrep
 rsync
 sudo
