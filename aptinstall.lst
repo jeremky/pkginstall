@@ -8,7 +8,6 @@ fail2ban
 fd-find
 fzf
 htop
-localepurge
 ncdu
 net-tools
 p7zip
@@ -20,7 +19,6 @@ sudo
 sysstat
 tmux
 tree
-tuned
 ufw
 unzip
 unattended-upgrades
