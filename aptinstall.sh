@@ -1,5 +1,4 @@
-#!/bin/bash
-set -e
+#!/bin/bash -e
 
 # Vérification des droits root
 if [[ "$USER" != "root" ]]; then
