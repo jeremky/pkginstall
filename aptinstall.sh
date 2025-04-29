@@ -43,8 +43,3 @@ if [[ -f /usr/sbin/ufw ]]; then
   ufw allow ssh
   ufw enable
 fi
-
-# Activation de l'antivirus
-if [[ -f /usr/bin/freshclam ]]; then
-  systemctl enable --now clamav-freshclam
-fi
