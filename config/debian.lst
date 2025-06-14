@@ -1,0 +1,26 @@
+# aptinstall list
+colordiff
+cron
+curl
+duf
+fail2ban
+fd-find
+fzf
+htop
+ncdu
+net-tools
+pipes-sh
+plocate
+preload
+ripgrep
+rsync
+sudo
+sysstat
+tmux
+tree
+ufw
+unzip
+unattended-upgrades
+vim
+zip
+zoxide
