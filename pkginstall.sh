@@ -52,6 +52,8 @@ fi
 # Activation du Firewall (avec désactivation de l'IP v6)
 if [[ -f /usr/sbin/ufw ]]; then
   sed -i "s,IPV6=yes,IPV6=no," /etc/default/ufw
-  ufw allow ssh
+  if [[ -z "$(ufw status | grep SSH)" ]]; then
+    ufw allow SSH
+  fi
   ufw enable
 fi
