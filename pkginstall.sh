@@ -23,7 +23,7 @@ case $dist in
     fi
     ;;
   fedora)
-    dnf upgrade -y
+    dnf -y upgrade
     if [[ -f $list ]]; then
       dnf -y install $(cat $list | grep -v '#')
     fi
