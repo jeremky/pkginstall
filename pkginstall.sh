@@ -6,6 +6,15 @@ if [[ "$USER" != "root" ]]; then
   exit 0
 fi
 
+# Chargement du fichier de config
+cfg="$(dirname "$(realpath "$0")")/pkginstall.cfg"
+if [[ ! -f $cfg ]]; then
+  error "Fichier $cfg introuvable"
+  exit 1
+else
+  . $cfg
+fi
+
 # Config selon la distribution
 dist=$(cat /etc/os-release | grep "^ID=" | cut -d= -f2,2)
 list="$(dirname "$0")/config/$dist.lst"
@@ -51,7 +60,9 @@ fi
 
 # Activation du Firewall (avec désactivation de l'IP v6)
 if [[ -f /usr/sbin/ufw ]]; then
-  sed -i "s,IPV6=yes,IPV6=no," /etc/default/ufw
+  if [[ $ipv6 = "false" ]]; then
+    sed -i "s,IPV6=yes,IPV6=no," /etc/default/ufw
+  fi
   if [[ -z "$(ufw status | grep SSH)" ]]; then
     ufw allow SSH
   fi
