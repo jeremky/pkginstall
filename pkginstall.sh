@@ -63,8 +63,11 @@ if [[ -f /usr/sbin/ufw ]]; then
   if [[ $ipv6 = "false" ]]; then
     sed -i "s,IPV6=yes,IPV6=no," /etc/default/ufw
   fi
-  if [[ -z "$(ufw status | grep SSH)" ]]; then
-    ufw allow SSH
+  if [[ -n "$(ufw status | grep SSH)" ]]; then
+    ufw delete 1
   fi
+  for port in $ports; do
+    ufw allow $port
+  done
   ufw enable
 fi

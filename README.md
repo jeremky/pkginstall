@@ -8,11 +8,21 @@ Script automatisant l'installation et le paramétrage de Debian/Fedora.
 
 - Sécurise le serveur SSH et limite l'accès à l'utilisateur par défaut
 
-- Active le par-feu UFW si installé et autorise le port 22
+- Active le firewall UFW si installé
 
 - Configure unattended-upgrades sur debian si installé
 
 - Active la commande locate si installée
+
+## Configuration
+
+Un fichier de configuration `pkginstall.cfg` est présent pour configurer les éléments du firewall UFW. Vous pouvez spécifier les ports à autoriser (séparé par des espaces), ainsi qu'indiquer la désactivation de l'ipv6. Le fichier de configuration : 
+
+```txt
+# pkginstall config
+ipv6=true
+ports="22/tcp 80/tcp 443/tcp 25565 21115/tcp 21116 21117/tcp"
+```
 
 ## Utilisation
 
