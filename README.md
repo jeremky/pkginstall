@@ -16,7 +16,7 @@ Script automatisant l'installation et le paramétrage de Debian/Fedora.
 
 ## Configuration
 
-Un fichier de configuration `pkginstall.cfg` est présent pour configurer les éléments du firewall UFW. Vous pouvez spécifier les ports à autoriser (séparé par des espaces), ainsi qu'indiquer la désactivation de l'ipv6. Le fichier de configuration : 
+Un fichier de configuration `pkginstall.cfg` est présent pour configurer les éléments du firewall UFW. Vous pouvez spécifier les ports à autoriser (séparés par des espaces), ainsi qu'indiquer si vous désirez désactiver l'ipv6. Le fichier de configuration : 
 
 ```txt
 # pkginstall config
