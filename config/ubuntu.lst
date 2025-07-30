@@ -9,7 +9,6 @@ ncdu
 net-tools
 pipes-sh
 plocate
-preload
 ripgrep
 rsync
 sysstat
