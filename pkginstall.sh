@@ -52,13 +52,12 @@ if [[ -f /usr/bin/locate ]]; then
 fi
 
 # Sécurisation de ssh (check sur https://www.ssh-audit.com/#)
-if [[ ! -f /etc/ssh/sshd_config.old && -f /etc/ssh/sshd_config ]]; then
-  warning "Sécurisation de ssh..."
+if [[ ! -f /etc/ssh/sshd_config.d/$(id -un 1000).conf ]]; then
+  warning "Sécurisation de SSH..."
   cp -p /etc/ssh/sshd_config /etc/ssh/sshd_config.old
-  echo "" >> /etc/ssh/sshd_config 
-  echo -e "# Secure Config\nX11Forwarding no\nAllowUsers $(id -un 1000)\nHostKey /etc/ssh/ssh_host_ed25519_key\nPasswordAuthentication yes\nKexAlgorithms curve25519-sha256@libssh.org\nMACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com\nCiphers aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr" >> /etc/ssh/sshd_config
+  echo -e "# Secure Config\nX11Forwarding no\nAllowUsers $(id -un 1000)\nHostKey /etc/ssh/ssh_host_ed25519_key\nPasswordAuthentication yes\nKexAlgorithms curve25519-sha256@libssh.org\nMACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com\nCiphers aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr" >> /etc/ssh/sshd_config.d/$(id -un 1000).conf
   systemctl restart sshd
-  message "ssh sécurisé"
+  message "SSH sécurisé"
 fi
 
 # Correction du bug fail2ban

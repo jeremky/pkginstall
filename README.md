@@ -20,8 +20,8 @@ Un fichier de configuration `pkginstall.cfg` est présent pour configurer les é
 
 ```txt
 # pkginstall config
-ipv6=true
-ports="22/tcp 80/tcp 443/tcp 25565 21115/tcp 21116 21117/tcp"
+ipv6=false
+ports="22/tcp 80/tcp 443 25565 21115/tcp 21116 21117/tcp"
 ```
 
 ## Utilisation
