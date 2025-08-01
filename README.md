@@ -8,7 +8,7 @@ Script automatisant l'installation et le paramétrage de Debian/Fedora.
 
 - Sécurise le serveur SSH et limite l'accès à l'utilisateur par défaut
 
-- Active le firewall UFW si installé
+- Active le firewall UFW sur debian si installé
 
 - Configure unattended-upgrades sur debian si installé
 
@@ -20,8 +20,8 @@ Un fichier de configuration `pkginstall.cfg` est présent pour configurer les é
 
 ```txt
 # pkginstall config
-ipv6=false
-ports="22/tcp 80/tcp 443 25565 21115/tcp 21116 21117/tcp"
+ufwipv6=false
+ufwports="22/tcp 80/tcp 443"
 ```
 
 ## Utilisation
