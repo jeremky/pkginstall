@@ -3,6 +3,7 @@ colordiff
 curl
 duf
 fd-find
+fonts-jetbrains-mono
 fzf
 htop
 ncdu
@@ -15,7 +16,6 @@ sysstat
 tmux
 tree
 unzip
-unattended-upgrades
 vim
 zip
 zoxide
