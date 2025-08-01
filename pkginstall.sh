@@ -27,7 +27,7 @@ list="$(dirname "$0")/config/$dist.lst"
 # Installation des paquets
 warning "Installation des paquets..."
 case $dist in
-  debian)
+  debian|ubuntu)
     apt update && apt -y full-upgrade
     if [[ -f $list ]]; then
       apt -y install $(cat $list | grep -v '#')
