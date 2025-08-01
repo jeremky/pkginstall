@@ -1,4 +1,4 @@
-# aptinstall list
+# aptinstall debian list
 certbot
 colordiff
 cron
