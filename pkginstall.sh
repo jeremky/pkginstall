@@ -40,6 +40,7 @@ case $dist in
   fedora)
     dnf -y upgrade
     if [[ -f $list ]]; then
+      dnf copr enable maveonair/jetbrains-mono-nerd-fonts
       dnf -y install $(cat $list | grep -v '#')
     fi
     ;;
@@ -78,4 +79,18 @@ if [[ -f /usr/sbin/ufw ]]; then
   fi
   ufw enable
   message "ufw activé"
+fi
+
+# Installation de NerdFont
+if [[ $nerdfont = true ]]; then
+  warning "Installation de NerdFont..."
+  version=$(curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest | grep '"tag_name":' | cut -d '"' -f 4)
+  rm -fr /usr/share/fonts/jetbrains-mono-nerd-fonts
+  mkdir -p /usr/share/fonts/jetbrains-mono-nerd-fonts
+  wget -P /usr/share/fonts/jetbrains-mono-nerd-fonts https://github.com/ryanoasis/nerd-fonts/releases/download/$version/JetBrainsMono.zip
+  cd /usr/share/fonts/jetbrains-mono-nerd-fonts
+  unzip JetBrainsMono.zip
+  rm JetBrainsMono.zip
+  fc-cache -fv
+  message "NerdFont installé"
 fi
