@@ -20,6 +20,11 @@ Un fichier de configuration `pkginstall.cfg` est présent pour configurer les é
 
 ```txt
 # pkginstall config
+
+# nerd font
+nerdfont=false
+
+# ufw
 ufwipv6=false
 ufwports="22/tcp 80/tcp 443"
 ```
