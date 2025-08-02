@@ -1,0 +1,21 @@
+# aptinstall ubuntu list
+colordiff
+curl
+duf
+fd-find
+fonts-jetbrains-mono
+fzf
+htop
+ncdu
+net-tools
+pipes-sh
+plocate
+ripgrep
+rsync
+sysstat
+tmux
+tree
+unzip
+vim
+zip
+zoxide
