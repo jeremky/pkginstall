@@ -14,19 +14,12 @@ Script automatisant l'installation et le paramétrage de Debian/Fedora.
 
 - Active la commande locate si installée
 
-- Installe la police JetBrains NerdFont
-
 ## Configuration
 
 Un fichier de configuration `pkginstall.cfg` est présent pour configurer les éléments du firewall UFW. Vous pouvez spécifier les ports à autoriser (séparés par des espaces), ainsi qu'indiquer si vous désirez désactiver l'ipv6. Le fichier de configuration : 
 
 ```txt
 # pkginstall config
-
-# nerd font
-nerdfont=false
-
-# ufw
 ufwipv6=false
 ufwports="22/tcp 80/tcp 443"
 ```
