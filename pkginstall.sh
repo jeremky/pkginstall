@@ -40,7 +40,6 @@ case $dist in
   fedora)
     dnf -y upgrade
     if [[ -f $list ]]; then
-      dnf copr enable maveonair/jetbrains-mono-nerd-fonts
       dnf -y install $(cat $list | grep -v '#')
     fi
     ;;
