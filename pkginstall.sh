@@ -21,7 +21,7 @@ else
 fi
 
 # Config selon la distribution
-dist=$(cat /etc/os-release | grep "^ID=" | cut -d= -f2,2)
+dist=$(grep "^ID=" /etc/os-release | cut -d= -f2,2 | tr -d '"')
 list="$(dirname "$0")/config/$dist.lst"
 
 # Installation des paquets
