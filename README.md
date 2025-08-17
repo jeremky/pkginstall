@@ -21,7 +21,7 @@ Un fichier de configuration `pkginstall.cfg` est présent pour configurer les é
 ```txt
 # pkginstall config
 ufwipv6=false
-ufwports="22/tcp 80/tcp 443"
+ufwports="22/tcp 80/tcp 443/tcp"
 ```
 
 ## Utilisation
