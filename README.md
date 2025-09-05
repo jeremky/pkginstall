@@ -12,6 +12,8 @@ Script automatisant l'installation et le paramétrage de Debian/Fedora.
 
 - Configure unattended-upgrades sur debian si installé
 
+- Modifie les paramètres de fail2ban sur debian si installé
+
 - Active la commande locate si installée
 
 ## Configuration
