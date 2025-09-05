@@ -59,6 +59,12 @@ if [[ -d /etc/ssh/sshd_config.d ]] && [[ ! -f /etc/ssh/sshd_config.d/$(id -un 10
   message "SSH sécurisé"
 fi
 
+# Modification de fail2ban sous Debian
+if [[ -f /etc/fail2ban/jail.d/defaults-debian.conf ]]; then
+  echo -e "\nbantime  = 24h\nfindtime = 10m\nmaxretry = 3" >> /etc/fail2ban/jail.d/defaults-debian.conf
+  systemctl restart fail2ban
+fi
+
 # Activation du Firewall (avec désactivation de l'IP v6)
 if [[ -f /usr/sbin/ufw ]]; then
   warning "Activation du firewall ufw..."
