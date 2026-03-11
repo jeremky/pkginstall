@@ -43,7 +43,7 @@ if [[ -f /usr/bin/unattended-upgrades ]] && [[ $unattended = "true" ]]; then
   dpkg-reconfigure unattended-upgrades
 fi
 
-# Sécurisation de ssh (check sur https://www.ssh-audit.com)
+# Sécurisation de ssh
 if [[ -d /etc/ssh/sshd_config.d ]] && [[ ! -f /etc/ssh/sshd_config.d/$(id -un 1000).conf ]]; then
   warning "Sécurisation de SSH..."
   echo -e "# Secure Config\nX11Forwarding no\nAllowUsers $(id -un 1000)\nHostKey /etc/ssh/ssh_host_ed25519_key\nPasswordAuthentication yes\nKexAlgorithms curve25519-sha256@libssh.org\nMACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com\nCiphers aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr" > /etc/ssh/sshd_config.d/$(id -un 1000).conf
