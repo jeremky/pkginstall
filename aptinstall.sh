@@ -12,7 +12,7 @@ if [[ "$USER" != "root" ]]; then
 fi
 
 # Chargement du fichier de config
-cfg="$(dirname "$0")/aptinstall.cfg"
+cfg="$(dirname "$0")/aptinstall.config"
 if [[ ! -f $cfg ]]; then
   error "Fichier $cfg introuvable"
   exit 1
@@ -22,7 +22,7 @@ fi
 
 # Config selon la distribution
 dist=$(grep "^ID=" /etc/os-release | cut -d= -f2,2 | tr -d '"')
-list="$(dirname "$0")/config/$dist.cfg"
+list="$(dirname "$0")/config/$dist.config"
 
 # Installation des paquets
 warning "Mise à jour des paquets..."
