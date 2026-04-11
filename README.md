@@ -1,4 +1,4 @@
-# aptinstall.sh
+# aptinstall
 
 Script automatisant l'installation et le paramétrage de Debian/Ubuntu.
 
@@ -18,7 +18,8 @@ Script automatisant l'installation et le paramétrage de Debian/Ubuntu.
 
 ## Configuration
 
-Un fichier de configuration `aptinstall.cfg` est présent pour configurer la mise à jour automatique et les éléments du firewall UFW.
+Un fichier de configuration `aptinstall.config` est présent pour configurer la mise à jour automatique et les éléments du firewall UFW.
+
 Vous pouvez spécifier les ports à autoriser (séparés par des espaces), ainsi qu'indiquer si vous désirez désactiver l'ipv6.
 
 Le fichier de configuration :
@@ -33,7 +34,7 @@ ufwports="22/tcp 80/tcp 443/tcp"
 
 ## Utilisation
 
-Pour exécuter le script, vous devez disposer des droits root :
+Pour exécuter le script, lancez-le avec les droits root :
 
 ```bash
 sudo ./aptinstall.sh
