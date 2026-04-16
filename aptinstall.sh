@@ -27,9 +27,9 @@ list="$(dirname "$0")/config/$dist.cfg"
 # Installation des paquets
 warning "Mise à jour des paquets..."
 apt update && apt -y full-upgrade
-if [[ -f $list ]]; then
+if [[ -f "$list" ]]; then
   warning "Installation des paquets..."
-  apt -y install $(cat $list | grep -v '#')
+  apt -y install $(cat "$list" | grep -v '#')
   message "Paquets installés"
 fi
 
