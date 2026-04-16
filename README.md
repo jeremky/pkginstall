@@ -4,38 +4,91 @@ Script automatisant l'installation et le paramétrage de Debian/Ubuntu.
 
 ## Fonctionnalités
 
-- Installe les paquets présents dans le fichier `config/<votre_os>.cfg`
+- `install_packages` : met à jour le système et installe les applications présentes dans le fichier `config/<distribution>.cfg`
 
-- Sécurise le serveur SSH et limite l'accès à l'utilisateur par défaut
+- `enable_locate` : installe `plocate` et crée la base pour l'utiliser directement
 
-- Active le firewall UFW si installé
+- `enable_unattended` : installe `unattended-upgrades` et vous ouvre l'outil de configuration
 
-- Configure unattended-upgrades si installé
+- `configure_ufw` : installe et configure le firewall `ufw` avec les ports suivants :
+  - 22/tcp
+  - 80/tcp
+  - 443/tcp
 
-- Modifie les paramètres de fail2ban si installé
+- `configure_sshd` : crée un fichier pour `sshd` (`/etc/ssh/sshd_config.d/<user>.conf`) avec les éléments suivants :
+  - Restreint l'accès à l'utilisateur principal (UID 1000)
+  - Désactive le forwarding X11
+  - Force l'utilisation de la clé `ed25519` uniquement
+  - Limite les tentatives d'authentification à 3
+  - Restreint les algorithmes aux recommandations modernes :
+    - **Kex** : `curve25519-sha256`
+    - **Ciphers** : `aes256-gcm`, `aes256-ctr`, `aes192-ctr`, `aes128-gcm`, `aes128-ctr`
+    - **MACs** : `hmac-sha2-512-etm`, `hmac-sha2-256-etm`
 
-- Active la commande locate si installée
+> **Attention** : `PasswordAuthentication` reste activé par défaut. Penser à le désactiver dans `/etc/ssh/sshd_config.d/<user>.conf` après avoir configuré les clés SSH.
 
 ## Configuration
 
-Un fichier de configuration `aptinstall.cfg` est présent pour configurer la mise à jour automatique et les éléments du firewall UFW.
-
-Vous pouvez spécifier les ports à autoriser (séparés par des espaces), ainsi qu'indiquer si vous désirez désactiver l'ipv6.
-
-Le fichier de configuration :
+Un fichier de configuration `aptinstall.cfg` permet de paramétrer l'exécution du script selon vos préférences :
 
 ```txt
 # aptinstall config
-unattended=false
-ufwenable=false
-ufwipv6=false
-ufwports="22/tcp 80/tcp 443/tcp"
+
+install_packages=on
+
+enable_locate=on
+enable_unattended=off
+
+configure_sshd=on
+configure_ufw=off
+```
+
+Sous `config`, le fichier correspondant à votre OS doit contenir une liste de paquets à installer. Pour connaître le nom de votre distribution :
+
+```bash
+grep "^ID=" /etc/os-release | cut -d= -f2 | tr -d '"'
+```
+
+Exemple avec le fichier `config/debian.cfg` :
+
+```txt
+# aptinstall debian list
+
+colordiff
+curl
+duf
+fail2ban
+fd-find
+fzf
+git
+htop
+make
+ncdu
+net-tools
+pipes-sh
+ripgrep
+rsync
+shfmt
+ssh-audit
+sysstat
+tree
+tty-clock
+unzip
+vim
+zip
+zoxide
 ```
 
 ## Utilisation
 
-Pour exécuter le script, lancez-le avec les droits root :
+Une fois le fichier `aptinstall.cfg` et le fichier `config/<distribution>.cfg` modifiés, lancez le script avec les droits root :
 
 ```bash
 sudo ./aptinstall.sh
+```
+
+Il est possible, en cas de problème ou d'oubli, d'exécuter une action spécifique, en passant le processus en paramètre. Par exemple, si vous voulez seulement installer le firewall ufw :
+
+```bash
+sudo ./aptinstall.sh configure_ufw
 ```
