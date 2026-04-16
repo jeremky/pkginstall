@@ -13,11 +13,11 @@ fi
 
 # Chargement du fichier de config
 cfg="$(dirname "$0")/aptinstall.cfg"
-if [[ ! -f "$cfg" ]]; then
+if [[ -f "$cfg" ]]; then
+  . "$cfg"
+else
   error "Fichier $cfg introuvable"
   exit 1
-else
-  . "$cfg"
 fi
 
 # Config selon la distribution
@@ -29,8 +29,11 @@ warning "Mise à jour des paquets..."
 apt update && apt -y full-upgrade
 if [[ -f "$list" ]]; then
   warning "Installation des paquets..."
-  apt -y install $(cat "$list" | grep -v '#')
-  message "Paquets installés"
+  apt -y install $(cat "$list" | grep -v '#') || {
+    error "Problème lors de l'installation des paquets"
+    exit 1
+  }
+  message "Paquets du fichier $list installés"
 fi
 
 # Activation de locate
