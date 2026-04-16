@@ -13,11 +13,11 @@ fi
 
 # Chargement du fichier de config
 cfg="$(dirname "$0")/aptinstall.cfg"
-if [[ ! -f $cfg ]]; then
-  error "Fichier $cfg introuvable"
+if [[ ! -f "$cfg" ]]; then
+  error "Fichier '$cfg' introuvable"
   exit 1
 else
-  . $cfg
+  . "$cfg"
 fi
 
 # Config selon la distribution
