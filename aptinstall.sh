@@ -35,19 +35,19 @@ install_packages() {
 }
 
 enable_locate() {
-  if apt install -y plocate; then
+  if apt -y install plocate; then
     updatedb
   fi
 }
 
 enable_unattended() {
-  if apt install -y unattended-upgrades; then
+  if apt -y install unattended-upgrades; then
     dpkg-reconfigure unattended-upgrades
   fi
 }
 
 configure_ufw() {
-  if apt install -y ufw; then
+  if apt -y install ufw; then
     warning "Activation du firewall ufw..."
     sed -i "s,IPV6=yes,IPV6=no," /etc/default/ufw
     for port in 22/tcp 80/tcp 443/tcp; do
