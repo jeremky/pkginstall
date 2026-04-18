@@ -46,6 +46,19 @@ enable_unattended() {
   fi
 }
 
+disable_tty() {
+  warning "Désactivation du tty1..."
+  systemctl disable getty@tty1
+  message "tty1 désactivé"
+}
+
+disable_sudofile() {
+  warning "Désactivation du fichier .sudo_as_admin_successful..."
+  echo 'Defaults !admin_flag' | tee /etc/sudoers.d/010_sudofile
+  chmod 440 /etc/sudoers.d/010_sudofile
+  message "Fichier .sudo_as_admin_successful désactivé"
+}
+
 configure_ufw() {
   if apt -y install ufw; then
     warning "Activation du firewall ufw..."

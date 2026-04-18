@@ -10,6 +10,10 @@ Script automatisant l'installation et le paramétrage de Debian/Ubuntu.
 
 - `enable_unattended` : installe `unattended-upgrades` et vous ouvre l'outil de configuration
 
+- `disable_tty1` : désactive le tty1 si c'est pour une utilisation uniquement par SSH
+
+- `disable_sudofile` : désactive la création automatique du fichier `.sudo_as_admin_successful`
+
 - `configure_ufw` : installe et configure le firewall `ufw` avec les ports suivants :
   - 22/tcp
   - 80/tcp
@@ -39,8 +43,13 @@ install_packages=on
 enable_locate=on
 enable_unattended=off
 
-configure_sshd=on
+disable_tty1=off
+disable_sudofile=on
+
+configure_fail2ban=off
 configure_ufw=off
+configure_sshd=on
+
 ```
 
 Sous `config`, le fichier correspondant à votre OS doit contenir une liste de paquets à installer. Pour connaître le nom de votre distribution :
