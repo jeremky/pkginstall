@@ -5,6 +5,12 @@ error() { echo -e "\033[0;31m====> $*\033[0m"; }
 message() { echo -e "\033[0;32m====> $*\033[0m"; }
 warning() { echo -e "\033[0;33m====> $*\033[0m"; }
 
+# Vérification du paramètre
+if [[ -z "$1" ]]; then
+  error "Usage : $(basename "$0") <profil>"
+  exit 1
+fi
+
 # Vérification des droits root
 if [[ "$EUID" -ne 0 ]]; then
   error "Droits root nécessaires"
@@ -63,7 +69,7 @@ configure_ufw() {
 }
 
 configure_sshd() {
-  if [[ -d /etc/ssh/sshd_config.d ]] && [[ ! -f /etc/ssh/sshd_config.d/$(id -un 1000).conf ]]; then
+  if [[ -d /etc/ssh/sshd_config.d ]]; then
     warning "Sécurisation de SSH..."
     echo -e "# Secure Config\nX11Forwarding no\nAllowUsers $(id -un 1000)\nHostKey /etc/ssh/ssh_host_ed25519_key\nPasswordAuthentication yes\nKbdInteractiveAuthentication yes\nMaxAuthTries 3\nClientAliveInterval 300\nClientAliveCountMax 2\nKexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org\nMACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com\nCiphers aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr" >"/etc/ssh/sshd_config.d/$(id -un 1000).conf"
     systemctl restart sshd
@@ -72,20 +78,17 @@ configure_sshd() {
 }
 
 # Exécution
-case "$1" in
-  desktop | server)
-    cfg="$(dirname "$0")/config/$1/config.cfg"
-    list="$(dirname "$0")/config/$1/packages.list"
-    if [[ ! -f "$cfg" ]] || [[ ! -f "$list" ]]; then
-      error "Fichier $cfg ou $list introuvable"
-      exit 1
-    fi
-    ;;
-  *)
-    error "Profil inconnu : $1. Profils disponibles : desktop, server"
-    exit 1
-    ;;
-esac
+dir="$(dirname "$0")/config/$1"
+if [[ ! -d "$dir" ]]; then
+  error "Profil $1 inconnu"
+  exit 1
+fi
+cfg="$dir/config.cfg"
+list="$dir/packages.list"
+if [[ ! -f "$cfg" ]] || [[ ! -f "$list" ]]; then
+  error "Fichier $cfg ou $list introuvable"
+  exit 1
+fi
 
 while IFS='=' read -r key value; do
   [[ -z "$key" || "$key" == \#* ]] && continue
