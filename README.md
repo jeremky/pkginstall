@@ -2,9 +2,11 @@
 
 Script automatisant l'installation et le paramétrage de Debian/Ubuntu.
 
+Le script dispose désormais d'une séparation entre un mode `server` et un mode `desktop`.
+
 ## Fonctionnalités
 
-- `install_packages` : met à jour le système et installe les applications présentes dans le fichier `config/<distribution>.cfg`
+- `install_packages` : met à jour le système et installe les applications présentes dans le fichier `config/<mode>/config.cfg`
 
 - `enable_locate` : installe `plocate` et crée la base pour l'utiliser directement
 
@@ -33,35 +35,30 @@ Script automatisant l'installation et le paramétrage de Debian/Ubuntu.
 
 ## Configuration
 
-Un fichier de configuration `aptinstall.cfg` permet de paramétrer l'exécution du script selon vos préférences :
+Un fichier de configuration sous `config/<mode>/config.cfg` permet de paramétrer l'exécution du script selon vos préférences. Exemple avec le mode `server` :
 
 ```txt
-# aptinstall config
+# aptinstall server config
 
 install_packages=on
 
 enable_locate=on
-enable_unattended=off
+enable_unattended=on
 
-disable_tty1=off
+disable_tty1=on
 disable_sudofile=on
 
 configure_fail2ban=off
 configure_ufw=off
 configure_sshd=on
-
 ```
 
-Sous `config`, le fichier correspondant à votre OS doit contenir une liste de paquets à installer. Pour connaître le nom de votre distribution :
+Avec le fichier de config se trouve un fichier contenant la liste des paquets à installer si `install_packages` est actif.
 
-```bash
-grep "^ID=" /etc/os-release | cut -d= -f2 | tr -d '"'
-```
-
-Exemple avec le fichier `config/debian.cfg` :
+Exemple avec le fichier `config/server/packages.list` :
 
 ```txt
-# aptinstall debian list
+# aptinstall server list
 
 colordiff
 curl
@@ -77,6 +74,7 @@ net-tools
 pipes-sh
 ripgrep
 rsync
+shellcheck
 shfmt
 ssh-audit
 sysstat
@@ -86,18 +84,13 @@ unzip
 vim
 zip
 zoxide
+
 ```
 
 ## Utilisation
 
-Une fois le fichier `aptinstall.cfg` et le fichier `config/<distribution>.cfg` modifiés, lancez le script avec les droits root :
+Une fois le fichier `config/<mode>/config.cfg` modifié, lancez le script avec les droits root :
 
 ```bash
-sudo ./aptinstall.sh
-```
-
-Il est possible, en cas de problème ou d'oubli, d'exécuter une action spécifique, en passant le processus en paramètre. Par exemple, si vous voulez seulement installer le firewall ufw :
-
-```bash
-sudo ./aptinstall.sh configure_ufw
+sudo ./aptinstall.sh <mode>
 ```

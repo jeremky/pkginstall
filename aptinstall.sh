@@ -5,14 +5,6 @@ error() { echo -e "\033[0;31m====> $*\033[0m"; }
 message() { echo -e "\033[0;32m====> $*\033[0m"; }
 warning() { echo -e "\033[0;33m====> $*\033[0m"; }
 
-# Config
-dir=$(dirname "$0")
-cfg="$dir/aptinstall.cfg"
-if [[ ! -f "$cfg" ]]; then
-  error "Fichier $cfg introuvable"
-  exit 1
-fi
-
 # Vérification des droits root
 if [[ "$EUID" -ne 0 ]]; then
   error "Droits root nécessaires"
@@ -21,7 +13,6 @@ fi
 
 # Fonctions
 install_packages() {
-  list="$dir/config/$(grep "^ID=" /etc/os-release | cut -d= -f2 | tr -d '"').cfg"
   warning "Mise à jour des paquets..."
   apt update && apt -y full-upgrade
   if [[ -f "$list" ]]; then
@@ -46,7 +37,7 @@ enable_unattended() {
   fi
 }
 
-disable_tty() {
+disable_tty1() {
   warning "Désactivation du tty1..."
   systemctl disable getty@tty1
   message "tty1 désactivé"
@@ -80,24 +71,30 @@ configure_sshd() {
   fi
 }
 
-# Exécution des fonctions
-if [[ -n "$1" ]]; then
-  if declare -f "$1" >/dev/null; then
-    "$1"
-  else
-    error "Aucune fonction ne correspond au paramètre $1"
-    exit 1
-  fi
-else
-  while IFS='=' read -r key value; do
-    [[ -z "$key" || "$key" == \#* ]] && continue
-    if [[ "$value" == "on" ]]; then
-      if declare -f "$key" >/dev/null; then
-        "$key"
-      else
-        error "Aucune fonction ne correspond au paramètre $key"
-        exit 1
-      fi
+# Exécution
+case "$1" in
+  desktop | server)
+    cfg="$(dirname "$0")/config/$1/config.cfg"
+    list="$(dirname "$0")/config/$1/packages.list"
+    if [[ ! -f "$cfg" ]] || [[ ! -f "$list" ]]; then
+      error "Fichier $cfg ou $list introuvable"
+      exit 1
     fi
-  done <"$cfg"
-fi
+    ;;
+  *)
+    error "Profil inconnu : $1. Profils disponibles : desktop, server"
+    exit 1
+    ;;
+esac
+
+while IFS='=' read -r key value; do
+  [[ -z "$key" || "$key" == \#* ]] && continue
+  if [[ "$value" == "on" ]]; then
+    if declare -f "$key" >/dev/null; then
+      "$key"
+    else
+      error "Aucune fonction ne correspond au paramètre $key"
+      exit 1
+    fi
+  fi
+done <"$cfg"

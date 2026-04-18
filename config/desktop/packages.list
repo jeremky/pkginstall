@@ -1,4 +1,4 @@
-# aptinstall ubuntu list
+# aptinstall desktop list
 
 colordiff
 curl
@@ -8,18 +8,16 @@ fonts-jetbrains-mono
 fzf
 git
 gnome-shell-extension-manager
-# gnome-software
-# gnome-software-plugin-flatpak
+gnome-software
+gnome-software-plugin-flatpak
 gnome-tweaks
 htop
 make
 ncdu
-net-tools
 papirus-icon-theme
 pipes-sh
 ripgrep
 rsync
-sysstat
 tree
 tty-clock
 unzip

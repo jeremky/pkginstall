@@ -1,4 +1,4 @@
-# aptinstall debian list
+# aptinstall server list
 
 colordiff
 curl
