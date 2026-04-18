@@ -14,7 +14,7 @@ if [[ ! -f "$cfg" ]]; then
 fi
 
 # Vérification des droits root
-if [[ "$EUID" -eq 0 ]]; then
+if [[ "$EUID" -ne 0 ]]; then
   error "Droits root nécessaires"
   exit 1
 fi
