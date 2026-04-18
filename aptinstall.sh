@@ -49,13 +49,6 @@ disable_tty1() {
   message "tty1 désactivé"
 }
 
-disable_sudopasswd() {
-  warning "Désactivation du mot de pass pour les utilisateurs sudo..."
-  echo "%sudo ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/010_nopasswd
-  chmod 440 /etc/sudoers.d/010_nopasswd
-  message "Mot de passe sudo désactivé"
-}
-
 disable_sudofile() {
   warning "Désactivation du fichier .sudo_as_admin_successful..."
   echo 'Defaults !admin_flag' | tee /etc/sudoers.d/010_sudofile
@@ -82,6 +75,13 @@ configure_sshd() {
     systemctl restart sshd
     message "SSH sécurisé. Modifiez le fichier /etc/ssh/sshd_config.d/$(id -un 1000).conf pour désactiver la connexion par mot de passe après avoir importé votre clé ed25519."
   fi
+}
+
+disable_sudopasswd() {
+  warning "Désactivation du mot de pass pour les utilisateurs sudo..."
+  echo "%sudo ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/010_nopasswd
+  chmod 440 /etc/sudoers.d/010_nopasswd
+  message "Mot de passe sudo désactivé"
 }
 
 # Exécution
