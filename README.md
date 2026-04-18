@@ -33,6 +33,8 @@ Le script dispose désormais d'une séparation entre un mode `server` et un mode
 
 > **Attention** : `PasswordAuthentication` reste activé par défaut. Penser à le désactiver dans `/etc/ssh/sshd_config.d/<user>.conf` après avoir configuré les clés SSH.
 
+- `disable_sudopasswd` : désactive la demande du mot de passe pour les commandes sudo. **A NE PAS UTILISER EN PROD !**
+
 ## Configuration
 
 Un fichier de configuration sous `config/<mode>/config.cfg` permet de paramétrer l'exécution du script selon vos préférences. Exemple avec le mode `server` :
@@ -51,6 +53,8 @@ disable_sudofile=on
 configure_fail2ban=off
 configure_ufw=off
 configure_sshd=on
+
+disable_sudopasswd=off
 ```
 
 Avec le fichier de config se trouve un fichier contenant la liste des paquets à installer si `install_packages` est actif.
