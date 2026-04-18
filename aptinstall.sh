@@ -87,7 +87,7 @@ disable_sudopasswd() {
 # Exécution
 dir="$(dirname "$0")/config/$1"
 if [[ ! -d "$dir" ]]; then
-  error "Profil $1 inconnu"
+  error "Profil $1 non trouvé"
   exit 1
 fi
 cfg="$dir/config.cfg"
