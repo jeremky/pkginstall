@@ -46,6 +46,7 @@ Un fichier de configuration sous `config/<mode>/config.cfg` permet de paramétre
 
 install_packages=on
 
+enable_flathub=off
 enable_locate=on
 enable_unattended=on
 
