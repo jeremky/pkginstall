@@ -64,6 +64,13 @@ disable_sudofile() {
   message "Fichier .sudo_as_admin_successful désactivé"
 }
 
+disable_sudopasswd() {
+  warning "Désactivation du mot de pass pour les utilisateurs sudo..."
+  echo "%sudo ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/010_nopasswd
+  chmod 440 /etc/sudoers.d/010_nopasswd
+  message "Mot de passe sudo désactivé"
+}
+
 configure_ufw() {
   if apt -y install ufw; then
     warning "Activation du firewall ufw..."
@@ -83,13 +90,6 @@ configure_sshd() {
     systemctl restart sshd
     message "SSH sécurisé. Modifiez le fichier /etc/ssh/sshd_config.d/$(id -un 1000).conf pour désactiver la connexion par mot de passe après avoir importé votre clé ed25519."
   fi
-}
-
-disable_sudopasswd() {
-  warning "Désactivation du mot de pass pour les utilisateurs sudo..."
-  echo "%sudo ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/010_nopasswd
-  chmod 440 /etc/sudoers.d/010_nopasswd
-  message "Mot de passe sudo désactivé"
 }
 
 # Exécution
