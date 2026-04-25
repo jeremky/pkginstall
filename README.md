@@ -39,7 +39,8 @@ Le script dispose désormais d'une séparation entre un mode `server` et un mode
 
 ## Configuration
 
-Un fichier de configuration sous `config/<mode>/config.cfg` permet de paramétrer l'exécution du script selon vos préférences. Commentez les fonctions que vous ne voulez pas utiliser. Exemple avec le mode `server` :
+Un fichier de configuration sous `config/<mode>/config.cfg` permet de paramétrer l'exécution du script selon vos préférences.
+Commentez les fonctions que vous ne voulez pas utiliser. Exemple avec le mode `server` :
 
 ```txt
 # aptinstall server config
