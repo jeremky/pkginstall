@@ -7,16 +7,13 @@ fd-find
 fonts-jetbrains-mono
 fzf
 gnome-shell-extension-manager
-gnome-tweaks
+# gnome-tweaks
 htop
-make
 ncdu
-papirus-icon-theme
-pipes-sh
+# papirus-icon-theme
 ripgrep
 rsync
 tree
-tty-clock
 unzip
 vim
 zip
