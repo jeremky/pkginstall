@@ -39,25 +39,24 @@ Le script dispose désormais d'une séparation entre un mode `server` et un mode
 
 ## Configuration
 
-Un fichier de configuration sous `config/<mode>/config.cfg` permet de paramétrer l'exécution du script selon vos préférences. Exemple avec le mode `server` :
+Un fichier de configuration sous `config/<mode>/config.cfg` permet de paramétrer l'exécution du script selon vos préférences. Commentez les fonctions que vous ne voulez pas utiliser. Exemple avec le mode `server` :
 
 ```txt
 # aptinstall server config
 
-install_packages=on
+install_packages
 
-enable_flathub=off
-enable_locate=on
-enable_unattended=on
+# enable_flathub
+enable_locate
+enable_unattended
 
-disable_tty1=on
-disable_sudofile=on
+disable_tty1
+disable_sudofile
+# disable_sudopasswd
 
-configure_fail2ban=off
-configure_ufw=off
-configure_sshd=on
-
-disable_sudopasswd=off
+configure_fail2ban
+# configure_ufw
+configure_sshd
 ```
 
 Avec le fichier de config se trouve un fichier contenant la liste des paquets à installer si `install_packages` est actif.
