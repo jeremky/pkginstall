@@ -32,7 +32,7 @@ install_packages() {
 }
 
 enable_flathub() {
-  if apt install -y flatpak; then
+  if apt install -y flatpak gnome-software gnome-software-plugin-flatpak; then
     warning "Activation de Flathub..."
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     message "Flathub activé"
@@ -105,14 +105,12 @@ if [[ ! -f "$cfg" ]] || [[ ! -f "$list" ]]; then
   exit 1
 fi
 
-while IFS='=' read -r key value; do
-  [[ -z "$key" || "$key" == \#* ]] && continue
-  if [[ "$value" == "on" ]]; then
-    if declare -f "$key" >/dev/null; then
-      "$key"
-    else
-      error "Aucune fonction ne correspond au paramètre $key"
-      exit 1
-    fi
+while read -r line; do
+  [[ -z "$line" || "$line" == \#* ]] && continue
+  if declare -f "$line" >/dev/null; then
+    "$line"
+  else
+    error "Aucune fonction ne correspond au paramètre $line"
+    exit 1
   fi
 done <"$cfg"
