@@ -62,7 +62,7 @@ configure_sshd
 
 Avec le fichier de config se trouve un fichier contenant la liste des paquets à installer si `install_packages` est actif.
 
-Exemple avec le fichier `config/server/packages.list` :
+Exemple avec le fichier `config/server/packages.cfg` :
 
 ```txt
 # aptinstall server list
