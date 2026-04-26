@@ -99,7 +99,7 @@ if [[ ! -d "$dir" ]]; then
   exit 1
 fi
 cfg="$dir/config.cfg"
-list="$dir/packages.list"
+list="$dir/packages.cfg"
 if [[ ! -f "$cfg" ]] || [[ ! -f "$list" ]]; then
   error "Fichier $cfg ou $list introuvable"
   exit 1
