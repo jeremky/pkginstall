@@ -6,7 +6,7 @@ Le script dispose désormais d'une séparation entre un mode `server` et un mode
 
 ## Fonctionnalités
 
-- `install_packages` : met à jour le système et installe les applications présentes dans le fichier `config/<mode>/config.cfg`
+- `install_packages` : met à jour le système et installe les applications présentes dans le fichier `config/<mode>/packages.cfg`
 
 - `enable_flathub` : installe flatpak, le repo flathub, et le store d'applications Gnome
 
