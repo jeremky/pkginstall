@@ -18,6 +18,8 @@ Le script dispose désormais d'une séparation entre un mode `server` et un mode
 
 - `disable_sudofile` : désactive la création automatique du fichier `.sudo_as_admin_successful`
 
+- `disable_sudopasswd` : désactive la demande du mot de passe pour les commandes sudo. **A NE PAS UTILISER EN PROD !**
+
 - `configure_ufw` : installe et configure le firewall `ufw` avec les ports suivants :
   - 22/tcp
   - 80/tcp
@@ -34,8 +36,6 @@ Le script dispose désormais d'une séparation entre un mode `server` et un mode
     - **MACs** : `hmac-sha2-512-etm`, `hmac-sha2-256-etm`
 
 > **Attention** : `PasswordAuthentication` reste activé par défaut. Penser à le désactiver dans `/etc/ssh/sshd_config.d/<user>.conf` après avoir configuré les clés SSH.
-
-- `disable_sudopasswd` : désactive la demande du mot de passe pour les commandes sudo. **A NE PAS UTILISER EN PROD !**
 
 ## Configuration
 
